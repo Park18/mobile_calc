@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="mobile_calc.MainPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label x:Name="polynomial_label"
+               Text="" TextColor="White" FontSize="70" HorizontalTextAlignment="End"
+               Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" />
+        <Label x:Name="tmp_label"
+               Text="0" TextColor="White" FontSize="70" HorizontalTextAlignment="End"
+               Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" />
+
+        <Button Text="7" TextColor="Black" FontSize="50"
+                Grid.Row="3" Grid.Column="0" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Num_Clicked"/>
+        <Button Text="8" TextColor="Black" FontSize="50"
+                Grid.Row="3" Grid.Column="1" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Num_Clicked"/>
+        <Button Text="9" TextColor="Black" FontSize="50"
+                Grid.Row="3" Grid.Column="2" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Num_Clicked"/>
+        <Button Text="/" TextColor="Black" FontSize="50"
+                Grid.Row="3" Grid.Column="3" 
+                BackgroundColor="#E8C10C" CornerRadius="10"
+                Clicked="Calc_Clicked"/>
+
+        <Button Text="4" TextColor="Black" FontSize="50"
+                Grid.Row="4" Grid.Column="0" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Num_Clicked"/>
+        <Button Text="5" TextColor="Black" FontSize="50"
+                Grid.Row="4" Grid.Column="1" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Num_Clicked"/>
+        <Button Text="6" TextColor="Black" FontSize="50"
+                Grid.Row="4" Grid.Column="2" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Num_Clicked"/>
+        <Button Text="*" TextColor="Black" FontSize="50"
+                Grid.Row="4" Grid.Column="3" 
+                BackgroundColor="#E8C10C" CornerRadius="10"
+                Clicked="Calc_Clicked"/>
+
+        <Button Text="1" TextColor="Black" FontSize="50"
+                Grid.Row="5" Grid.Column="0" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Num_Clicked"/>
+        <Button Text="2" TextColor="Black" FontSize="50"
+                Grid.Row="5" Grid.Column="1" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Num_Clicked"/>
+        <Button Text="3" TextColor="Black" FontSize="50"
+                Grid.Row="5" Grid.Column="2" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Num_Clicked"/>
+        <Button Text="-" TextColor="Black" FontSize="50"
+                Grid.Row="5" Grid.Column="3" 
+                BackgroundColor="#E8C10C" CornerRadius="10"
+                Clicked="Calc_Clicked"/>
+
+        <Button Text="." TextColor="Black" FontSize="50"
+                Grid.Row="6" Grid.Column="2" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Point_Clicked"/>
+        <Button Text="0" TextColor="Black" FontSize="50"
+                Grid.Row="6" Grid.Column="1"
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Num_Clicked"/>
+        <Button Text="±" TextColor="Black" FontSize="50"
+                Grid.Row="6" Grid.Column="0" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Sign_Clicked"/>
+        <Button Text="+" TextColor="Black" FontSize="50"
+                Grid.Row="6" Grid.Column="3" 
+                BackgroundColor="#E8C10C" CornerRadius="10"
+                Clicked="Calc_Clicked"/>
+
+        <Button Text="C" TextColor="Black" FontSize="50"
+                Grid.Row="7" Grid.Column="0" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Clear_Clicked"/>
+        <Button Text="CE" TextColor="Black" FontSize="50"
+                Grid.Row="7" Grid.Column="1" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Clear_Entry_Clicked"/>
+        <Button Text="=" TextColor="Black" FontSize="50"
+                Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" 
+                BackgroundColor="#E8C10C" CornerRadius="10"
+                Clicked="Result_Clicked"/>
+
+        <Label Text="Park18" TextColor="White" FontSize="50" HorizontalTextAlignment="Center"
+               Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4"/>
+    </Grid>
+
+</ContentPage>
