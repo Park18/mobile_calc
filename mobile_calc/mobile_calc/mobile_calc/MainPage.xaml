@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="mobile_calc.MainPage">
+             x:Class="mobile_calc.MainPage" BackgroundColor="Black">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -108,8 +108,12 @@
                 Grid.Row="7" Grid.Column="1" 
                 BackgroundColor="White" CornerRadius="10"
                 Clicked="Clear_Entry_Clicked"/>
+        <Button Text="←" TextColor="Black" FontSize="50"
+                Grid.Row="7" Grid.Column="2" 
+                BackgroundColor="White" CornerRadius="10"
+                Clicked="Back_Clicked" />
         <Button Text="=" TextColor="Black" FontSize="50"
-                Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" 
+                Grid.Row="7" Grid.Column="3" 
                 BackgroundColor="#E8C10C" CornerRadius="10"
                 Clicked="Result_Clicked"/>
 
