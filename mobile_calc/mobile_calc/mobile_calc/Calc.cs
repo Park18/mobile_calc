@@ -4,25 +4,19 @@ using System.Text;
 
 namespace mobile_calc
 {
+    /// <summary>
+    /// 계산기의 메인 클래스
+    /// </summary>
     class Calc
     {
-        private double tmp_result;
-
-        public Calc()
-        {
-            Set_Tmp_Result(0);
-        }
-
-        public void Set_Tmp_Result(double result)
-        {
-            this.tmp_result = result;
-        }
-
-        public double Get_Tmp_Result()
-        {
-            return this.tmp_result;
-        }
-
+        /// <summary>
+        /// 매개변수로 피연산자 x와 y, 연산자 tmp_operator를 받고
+        /// x 연산자 y를 계산하여 반환한다.
+        /// </summary>
+        /// <param name="x">피연산자 x</param>
+        /// <param name="y">피연산자 y</param>
+        /// <param name="tmp_operator">연산자</param>
+        /// <returns>연산 결과</returns>
         public double Operate(double x, double y, char tmp_operator)
         {
             if (tmp_operator == '+')
@@ -46,9 +40,16 @@ namespace mobile_calc
             }
         }
 
+        /// <summary>
+        /// 매개변수로 받은 값이 옳바른 값인지 확인한다.
+        /// 옳바른 값이면 true, 틀린 값이면 false를 반환한다.
+        /// </summary>
+        /// <param name="num">double형 숫자</param>
+        /// <returns></returns>
         public bool Is_Right(double num)
         {
-            if (double.IsNaN(num))
+
+            if (double.IsInfinity(num) || double.IsNaN(num))
             {
                 return false;
             }
@@ -56,21 +57,6 @@ namespace mobile_calc
             else
             {
                 return true;
-            }
-        }
-
-        public bool Is_Int(double num)
-        {
-            int tmp_num = (int)num;
-
-            if((double)tmp_num == num)
-            {
-                return true;
-            }
-
-            else
-            {
-                return false;
             }
         }
     }
