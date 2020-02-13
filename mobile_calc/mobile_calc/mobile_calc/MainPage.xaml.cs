@@ -30,9 +30,9 @@ namespace mobile_calc
             this.Init();
         }
 
-        /**
-         * @brief   클래스 멤버 변수 초기화 메소드
-         */
+        /// <summary>
+        /// class memeber init
+        /// </summary>
         private void Init()
         {
             this.is_point = false;
@@ -44,18 +44,16 @@ namespace mobile_calc
             this.tmp_operator = 'N';
         }
 
-        /**
-         * @brief       숫자 버튼 이벤트
-         * @details     버튼에 해당하는 숫자가 
-         *              tmp_label 입력된다.
-         * @param   sender 이벤트 발생 대상
-         * @param   e 이벤트 종류
-         */
+        /// <summary>
+        /// 숫자 버튼 이벤트
+        /// 해당 버튼의 숫자를 tmp_label에 입력한다.
+        /// </summary>
+        /// <param name="sender">이벤트 발생 대상</param>
+        /// <param name="e">이벤트 종류</param>
         private void Num_Clicked(object sender, EventArgs e)
         {
-            // 숫자 버튼이 눌렸을 때 tmp_label의 숫자가 0이면 
-            // 0대신 공백으로 설정한다.
-            if(tmp_label.Text == "0" || this.is_result)
+            // tmp_label.Text가 "0"이거나 MainPage.is_result가 ture일 때
+            if (tmp_label.Text == "0" || this.is_result)
             {
                 this.is_result = false;
                 tmp_label.Text = "";
@@ -69,7 +67,8 @@ namespace mobile_calc
                 }
             }
 
-            else if(tmp_label.Text=="-0")
+            // tmp_label.Text가 "-0"일 때
+            else if (tmp_label.Text=="-0")
             {
                 tmp_label.Text = "-";
             }
@@ -78,16 +77,15 @@ namespace mobile_calc
             tmp_label.Text = tmp_label.Text + ((Button)sender).Text;
         }
 
-        /**
-         * @brief   소수점 버튼 이벤트
-         * @details 소수점 없을 때
-         *          - 넣는다.
-         *          소주점 있을 때
-         *          - 소수점 위치가 마지막 위치이면 소수점 삭제
-         *          - 소수점 위치가 마지막 위치가 아니면 반응 x
-         * @param   sender 이벤트 발생 대상
-         * @param   e 이벤트 종류
-         */
+        /// <summary>
+        /// 소수점 버튼 이벤트
+        /// -소수점이 없을 때
+        ///     * tmp_label.Text 맨 마지막에 소수점을 추가한다.
+        /// -소수점이 있을 때
+        ///     * tmp_label.Text 맨 마지막에 소수점이 있으면 삭제
+        /// </summary>
+        /// <param name="sender">이벤트 발생 대상</param>
+        /// <param name="e">이벤트 종류</param>
         private void Point_Clicked(object sender, EventArgs e)
         {
             // is_point 가 해제되어있으면 설정하고 tmp_label에 소수점(".")을 추가한다.
@@ -106,40 +104,36 @@ namespace mobile_calc
                     this.is_point = false;
                     tmp_label.Text = tmp_label.Text.Substring(0, tmp_label.Text.Length - 1);
                 }
-
-                // 소수점의 위치가 tmp_label의 맨 마지막이 아니면 아무 행동도 하지 않는다.
-                else
-                {
-                    return;
-                }
             }
         }
 
-        /**
-          * @brief      부호(±) 버튼 이벤트
-          * @details    
-          * @param      sender 이벤트 발생 대상
-          * @param      e 이벤트 종류
-          */
+        /// <summary>
+        /// 부호(±) 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Sign_Clicked(object sender, EventArgs e)
         {
-            // is_sign 이 해제되어있으면 설정하고 tmp_label의 맨 앞에 음의 부호("-")를 추가한다.
-            if(this.is_sign == false)
+            // MainPage.is_sign이 false일 때
+            // is_sign을 true로 설정하고 tmp_label.Text의 맨 앞에 "-"를 추가한다.
+            if (this.is_sign == false)
             {
                 this.is_sign = true;
                 tmp_label.Text = "-" + tmp_label.Text;
             }
 
-            // is_sign 이 설정되어있으면 해제하고 tmp_label의 음의 부호를 제거한다.
+            // MainPage.is_result가 false가 아닐 때
+            // MainPage.is_sign을 false로 설정하고 tmp_label의 맨 앞의 문자를 제거한다.
             else
             {
                 this.is_sign = false;
                 tmp_label.Text = tmp_label.Text.Substring(1);
             }
 
-            // 현재 tmp_label 에 입력된 값이 결과 값이면 is_result 를 해제하고 is_sign 를 설정한다.
-            // tmp_label 의 값을 "-0"으로 변경한다.
-            if(this.is_result == true)
+            // MainPage.is_result가 true일 때
+            // MainPage.is_result, is_sign을 각각 false, true로 설정하고
+            // tmp_label.Text를 "-0"으로 설정한다.
+            if (this.is_result == true)
             {
                 this.is_result = false;
                 this.is_sign = true;
@@ -147,12 +141,11 @@ namespace mobile_calc
             }
         }
 
-        /**
-           * @brief     초기화 이벤트
-           * @details   모든 값을 초기화 한다.
-           * @param     sender 이벤트 발생 대상
-           * @param     e 이벤트 종류
-           */
+        /// <summary>
+        /// 초기화 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Clear_Clicked(object sender, EventArgs e)
         {
             this.Init();
@@ -160,26 +153,27 @@ namespace mobile_calc
             tmp_label.Text = "0";
         }
 
-        /**
-          * @brief   입력중인 값 초기화 이벤트
-          * @details tmp_label의 값에 입력된 값만 초기화 한다.
-          * @param   sender 이벤트 발생 대상
-          * @param   e 이벤트 종류
-          */
+        /// <summary>
+        /// 입력 정보 초기화 이벤트
+        /// 현재 입력된 숫자에 대해서 초기화 된다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Clear_Entry_Clicked(object sender, EventArgs e)
         {
             this.Init();
             tmp_label.Text = "0";
         }
 
-        /**
-          * @brief   사칙연산 버튼 이벤트
-          * @details 계산이 연속적으로 된다.
-          *          예) 15+45+26+ ... + 입력된 숫자
-          * @param   sender 이벤트 발생 대상
-          * @param   e 이벤트 종류
-          * @detales 
-          */
+        /// <summary>
+        /// 사칙연산 버튼 이벤트
+        /// 연속적인 계산을 지원한다.
+        /// </summary>
+        /// <example>
+        /// 15 + 45 + 26 + ... + 입력된 숫자
+        /// </example>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Calc_Clicked(object sender, EventArgs e)
         {
             if(this.is_last == true)
@@ -195,7 +189,7 @@ namespace mobile_calc
             }
 
 
-            // 첫 번째 입력이면 
+            // MainPage.is_last가 false이고 is_first가 true일 때 
             // 1. 첫 번째 입력이 아님을 알리기 위해 is_first 설정을 해제한다.
             // 2. tmp_operator 에 연산자를 저장한다.
             // 3. tmp_result 에 x(피연산자)를 저장한다.
@@ -212,7 +206,7 @@ namespace mobile_calc
                 tmp_label.Text = "0";
             }
 
-            // 첫 번째 입력이 아니면
+            // MainPage.is_last, is_first가 false일 때
             // 1. tmp_label 에 작성된 값이 결과 값임을 알리기 위해  is_result 를 설정한다.
             // 2. tmp_result에 x(tmp_result) 연산자(tmp_operator(전에 입력한 연산자)) y(현재 입력된 피연산자) 로 결과 값을 저장한다.
             //  예1) 연산식: 0.3 * 2 - 일 때
@@ -229,8 +223,20 @@ namespace mobile_calc
                 this.tmp_result = calc.Operate(this.tmp_result, Convert.ToDouble(tmp_label.Text), this.tmp_operator);
                 this.tmp_operator = ((Button)sender).Text[0];
 
-                polynomial_label.Text = polynomial_label.Text + tmp_label.Text + this.tmp_operator;
-                tmp_label.Text = Convert.ToString(this.tmp_result);
+                // MainPage.tmp_result의 값이 옳바른 값일 때
+                if (this.calc.Is_Right(this.tmp_result))
+                {
+                    polynomial_label.Text = polynomial_label.Text + tmp_label.Text + this.tmp_operator;
+                    tmp_label.Text = Convert.ToString(this.tmp_result);
+                }
+
+                // MainPage.tmp_result의 값이 옳바른 값이 아닐 때
+                else
+                {
+                    this.Init();
+                    polynomial_label.Text = "";
+                    tmp_label.Text = "0으로 나눌 수 없습니다.";
+                }
 
             }
 
@@ -239,22 +245,20 @@ namespace mobile_calc
             this.is_point = false;
         }
 
-        /**
-          * @brief   계산(=) 버튼 이벤트
-          * @details 계산이 연속적이지 않다.
-          *          예) 
-          * @param   sender 이벤트 발생 대상
-          * @param   e 이벤트 종류
-          */
+        /// <summary>
+        /// 결과(=) 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Result_Clicked(object sender, EventArgs e)
         {
-            // 첫 번째 사칙연산 입력 전이면 아무 행동하지 않는다.
+            // MainPage.is_first가 true일 때
             if (this.is_first == true)
             {
                 return;
             }
 
-            // 첫 번쨰 사칙 연산 입력 후이면
+            // MainPage.is_first가 false일 때
             // 1. is_result, is_last 를 설정한다.
             // 2. polyomial_label 에 연산식을 작성한다.
             // 3. 결과 값을 연산한다.
@@ -271,27 +275,25 @@ namespace mobile_calc
 
         }
 
-        /**
-          * @brief      뒤로가기 버튼 이벤트
-          * @details    tmp_label의 숫자를 뒤에서부터 하나씩 없앤다.
-          *             소수점이나 부호가 있으면 없애면서 초기화를 한다.
-          * @param   sender 이벤트 발생 대상
-          * @param   e 이벤트 종류
-          */
+        /// <summary>
+        /// 뒤로가기 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Back_Clicked(object sender, EventArgs e)
         {
-            // tmp_label의 숫자 맨 마지막이 '.'이면 is_point 를 해제한다.
-            if(tmp_label.Text.LastIndexOf('.') == tmp_label.Text.Length - 1)
+            // tmp_label.Text의 맨 마지막이 "."일 때
+            if (tmp_label.Text.LastIndexOf('.') == tmp_label.Text.Length - 1)
             {
                 this.is_point = false;
             }
 
-            // tmp_label의 숫자 뒤에서 하나 삭제
+            // tmp_label.Text를 tmp_label.Text 맨 마지막을 뺀 문자열로 설정한다.
             tmp_label.Text = tmp_label.Text.Substring(0, tmp_label.Text.Length - 1);
 
-            // tmp_label의 길이가 0이 되거나 tmp_label이 "-"이면 
             // is_sign 을 해제하고 tmp_label을 "0"으로 설정한다.
-            if(tmp_label.Text.Length == 0 || tmp_label.Text == "-")
+            // tmp_label.Text의 길이가 0이거나 tmp_label.Text가 "-"일 때
+            if (tmp_label.Text.Length == 0 || tmp_label.Text == "-")
             {
                 this.is_sign = false;
                  tmp_label.Text = "0";
